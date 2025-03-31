@@ -54,6 +54,7 @@ class Target():
     def _check_play_button(self, mouse_pos):
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
+            self.settings.dynamic_settings()
             self._play_game()
 
     def _play_game(self):
@@ -106,6 +107,7 @@ class Target():
         if self.stats.rettangolo_ammaccato > 0:
             self.stats.rettangolo_ammaccato -=1
             self.bullets.empty()
+            self.settings.increase_speed()
         else:
             self.rettangolo_active=False
             self.game_active = False
